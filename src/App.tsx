@@ -329,11 +329,17 @@ const Page3 = () => {
               <span>🌸</span>
               <span>💕</span>
             </div>
+            <p className="text-2xl font-bold text-primary-pink animate-pulse-custom mt-4">Keep smiling Shiv 😊✨</p>
           </div>
         </div>
       </div>
 
-      {/* Credit removed */}
+      {/* Credit */}
+      <div className="mt-16 sm:mt-24 w-full flex justify-end fade-in pb-[env(safe-area-inset-bottom)]" style={{ animationDelay: '2s' }}>
+        <p className="text-gray-400 text-sm font-medium italic pr-4">
+          created by SagartheMotaBhalu 🐻😂
+        </p>
+      </div>
     </div>
   );
 };
