@@ -142,7 +142,7 @@ const Page1 = ({ onNext }: { onNext: () => void }) => {
               ${isDancing ? 'animate-dance' : isJumping ? 'animate-jump' : ''}`}
             onClick={handlePuppyClick}
           >
-            <div className={step === 1 ? 'animate-walk-bob' : ''}>
+            <div className={step === 1 ? 'animate-walk-bob animate-bounce-custom' : ''}>
               <div className={step === 1 ? 'animate-sniff-cartoon' : ''}>
                 🐕
               </div>
@@ -323,10 +323,13 @@ const Page3 = () => {
 
         <div className="pt-8">
           <p className="font-handwriting text-3xl text-primary-pink">With all my paws and heart 🐾💕</p>
-          <div className="mt-6 flex justify-center gap-4 text-3xl animate-pulse-custom">
-            <span>💕</span>
-            <span>🌸</span>
-            <span>💕</span>
+          <div className="mt-6 flex flex-col items-center gap-4">
+            <div className="flex justify-center gap-4 text-3xl animate-pulse-custom">
+              <span>💕</span>
+              <span>🌸</span>
+              <span>💕</span>
+            </div>
+            <p className="text-2xl font-bold text-primary-pink animate-pulse-custom mt-4">Keep smiling Shiv 😊✨</p>
           </div>
         </div>
       </div>

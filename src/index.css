@@ -73,6 +73,7 @@
 }
 
 .animate-walk-slow {
+  @apply inline-block;
   animation: walk-with-pause 8s linear forwards;
 }
 
