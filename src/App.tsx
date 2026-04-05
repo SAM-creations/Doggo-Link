@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Heart, Sparkles } from 'lucide-react';
 
@@ -329,6 +329,13 @@ const Page3 = () => {
             <span>💕</span>
           </div>
         </div>
+      </div>
+
+      {/* Credit */}
+      <div className="mt-16 sm:mt-24 w-full flex justify-end fade-in" style={{ animationDelay: '2s' }}>
+        <p className="text-gray-400 text-sm font-medium italic">
+          Created by samudragupta 🤪
+        </p>
       </div>
     </div>
   );
