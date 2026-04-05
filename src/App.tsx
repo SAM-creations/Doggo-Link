@@ -70,9 +70,9 @@ const Page1 = ({ onNext }: { onNext: () => void }) => {
   useEffect(() => {
     // Initial message pops up first
     const timer = setTimeout(() => {
-      setStep(1); // Start puppy walk after 2s
+      setStep(1); // Start puppy walk after 1s
       playSound('transition');
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -287,7 +287,7 @@ const Page3 = () => {
   }, []);
 
   return (
-    <div className="min-h-screen py-16 px-6 flex flex-col items-center z-10 relative max-w-3xl mx-auto">
+    <div className="min-h-screen py-16 px-6 flex flex-col items-center z-10 relative max-w-3xl mx-auto pb-24 sm:pb-16">
       <div className="flex gap-4 mb-12">
         {flowers.map((f, i) => (
           <div 
@@ -329,17 +329,37 @@ const Page3 = () => {
               <span>🌸</span>
               <span>💕</span>
             </div>
-            <p className="text-2xl font-bold text-primary-pink animate-pulse-custom mt-4">Keep smiling Shiv 😊✨</p>
           </div>
         </div>
       </div>
 
-      {/* Credit */}
-      <div className="mt-16 sm:mt-24 w-full flex justify-end fade-in" style={{ animationDelay: '2s' }}>
-        <p className="text-gray-400 text-sm font-medium italic">
-          Created by samudragupta 🤪
-        </p>
-      </div>
+      {/* Credit removed */}
+    </div>
+  );
+};
+
+const StartScreen = ({ onStart }: { onStart: () => void }) => {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center bg-linear-to-br from-bg-pink to-bg-cream">
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="bg-white p-10 rounded-3xl shadow-2xl border-2 border-pink-100 max-w-sm w-full"
+      >
+        <div className="text-6xl mb-6 animate-bounce-custom">🎁</div>
+        <h1 className="text-3xl font-handwriting text-primary-pink mb-4">A surprise for you!</h1>
+        <p className="text-gray-600 mb-8">I have something special to cheer you up. Ready to see it?</p>
+        <button
+          onClick={() => {
+            playSound('pop');
+            onStart();
+          }}
+          className="w-full py-4 bg-linear-to-r from-primary-pink to-pink-400 text-white rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95 transition-all duration-300"
+        >
+          Open Surprise ✨
+        </button>
+      </motion.div>
     </div>
   );
 };
@@ -358,7 +378,7 @@ const pageTransition = {
 };
 
 export default function App() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0); // 0: StartScreen, 1: Page1, 2: Page2, 3: Page3
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -369,6 +389,20 @@ export default function App() {
       <FloatingFlowers />
       
       <AnimatePresence mode="wait">
+        {page === 0 && (
+          <motion.div
+            key="start"
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={pageTransition}
+            className="w-full"
+          >
+            <StartScreen onStart={() => setPage(1)} />
+          </motion.div>
+        )}
+
         {page === 1 && (
           <motion.div
             key="page1"
