@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  --font-handwriting: "Caveat", cursive;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-primary-pink: #ff6b9d;
+  --color-secondary-orange: #ffa500;
+  --color-accent-yellow: #ffe66d;
+  --color-bg-pink: #fff5f9;
+  --color-bg-cream: #fffaed;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-gray-700 bg-linear-to-br from-bg-pink to-bg-cream min-h-screen overflow-x-hidden;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes sniff-cartoon {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  20% { transform: rotate(15deg) translateY(8px); }
+  40% { transform: rotate(10deg) translateY(10px); }
+  60% { transform: rotate(20deg) translateY(8px); }
+  80% { transform: rotate(15deg) translateY(10px); }
+}
+
+@keyframes walk-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes dance {
+  0%, 100% { transform: scale(1) rotate(0deg) translateY(0); }
+  20% { transform: scale(1.2) rotate(15deg) translateY(-20px); }
+  40% { transform: scale(1) rotate(-15deg) translateY(0); }
+  60% { transform: scale(1.2) rotate(360deg) translateY(-40px); }
+  80% { transform: scale(1) rotate(-15deg) translateY(0); }
+}
+
+@keyframes vigorous-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(45deg); }
+}
+
+.animate-sniff-cartoon {
+  animation: sniff-cartoon 0.8s ease-in-out infinite;
+}
+
+.animate-walk-bob {
+  animation: walk-bob 0.5s ease-in-out infinite;
+}
+
+.animate-dance {
+  animation: dance 1.5s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.animate-vigorous-wag {
+  animation: vigorous-wag 0.2s ease-in-out infinite;
+}
+
+@keyframes walk-with-pause {
+  0% { transform: translateX(100vw); }
+  40% { transform: translateX(55vw); }
+  60% { transform: translateX(45vw); }
+  100% { transform: translateX(0); }
+}
+
+.animate-walk-slow {
+  animation: walk-with-pause 8s linear forwards;
+}
+
+@keyframes wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes bounce-custom {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-30px); }
+  60% { transform: translateY(-15px); }
+}
+
+@keyframes jump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-40px) scale(1.1); }
+}
+
+.animate-jump {
+  animation: jump 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bark-text {
+  @apply absolute -top-12 left-1/2 -translate-x-1/2 text-primary-pink font-bold text-xl opacity-0;
+  animation: barkFade 1s ease-out forwards;
+}
+
+@keyframes barkFade {
+  0% { opacity: 0; transform: translate(-50%, 0); }
+  20% { opacity: 1; transform: translate(-50%, -20px); }
+  80% { opacity: 1; transform: translate(-50%, -20px); }
+  100% { opacity: 0; transform: translate(-50%, -40px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-walk {
+  animation: walk 3s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.animate-wag {
+  animation: wag 0.4s ease-in-out infinite;
+}
+
+.animate-pulse-custom {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-bounce-custom {
+  animation: bounce-custom 2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+}
+
+.animate-bloom {
+  animation: bloom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+  opacity: 0;
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-left {
+  opacity: 0;
+  animation: slideLeft 0.8s ease-out forwards;
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
